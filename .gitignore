@@ -1,0 +1,4 @@
+# In this file, we list any files or folders we would like git to ignore
+# Examples:
+# results/ # this will ignore "results" directory
+rii*

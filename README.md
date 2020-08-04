@@ -18,12 +18,11 @@ Step 2:
 Unzip the downloaded file, and save the extracted folder inside the folder "from_RefractiveIndex.info"
 
 Step 3:
-Import the database in Matlab format
+Import the database in Matlab format, by running this file:
+"load_all_optical_properties_from_downloaded_database.m"
 
 Step 4:
-Use the code!
+Now you can use the code!
+You need to repeat steps 1-3 only if you have updated database.
 
-
-The codes can do the following:
-
-#
+# What can this code do for you?
