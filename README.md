@@ -20,6 +20,9 @@ Unzip the downloaded file, and save the extracted folder inside the folder "from
 Step 3:
 Import the database in Matlab format
 
+Step 4:
+Use the code!
+
 
 The codes can do the following:
 
