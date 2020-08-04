@@ -1,0 +1,31 @@
+% this file read the data from the downloaded file from refractiveindex.info, and store the data in a structure for later use (for example, material search).
+
+% folder location that contains all the data
+DataSource = 'C:\Users\local-admin\Google Drive\elzouka_codes_library\MATLAB\optical_properties\from_RefractiveIndex.info\rii-database-2019-02-11';
+DataSource = [DataSource,filesep,'database\data'];
+cd(DataSource)
+All_yml_files = subdir('*.yml');
+
+counter = 0;
+for j1 = 1 : length(All_yml_files)
+	filepath = All_yml_files(j1).name;
+	try
+		x = YAML.read(filepath);
+		for j2 = 1 : length(x)
+			ThisMaterial = x(j2);
+			if length(ThisMaterial.DATA) > 1
+				for j3 = 1 : length(ThisMaterial.DATA)
+					counter = counter+1;
+					data_types{counter, 1} = (ThisMaterial.DATA{j3}.type);
+				end
+			else
+				counter = counter+1;
+				data_types{counter, 1} = (ThisMaterial.DATA.type);
+			end
+			% 		Data{counter} = (ThisMaterial.DATA);
+			% 		ThisMaterial.content
+		end
+	catch
+	end
+	
+end
