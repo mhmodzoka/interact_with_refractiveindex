@@ -14,7 +14,9 @@ end
 mfilepath = mfilename('fullpath'); ind_sep = find(mfilepath == filesep);
 mfile_folder = mfilepath(1:ind_sep(end)); cd(mfile_folder);
 
-load(['rii-database-2019-02-11', filesep, 'All_data_with_interpolation_processed.mat']);
+database_folders = dir([mfile_folder, filesep,'rii-*']);
+database_folder = database_folders(end).name;
+load([database_folder, filesep, 'All_data_with_interpolation_processed.mat']);
 all_MaterialName = {All_data.data(:).MaterialName};
 ss = size(All_data.data); N_materials = ss(2);
 lambda_um_interp = [All_data.ReadMe.lambda_um_univ_interp];

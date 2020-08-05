@@ -1,10 +1,14 @@
 function add_data
+
 mfilepath = mfilename('fullpath'); ind_sep = find(mfilepath == filesep);
 mfile_folder = mfilepath(1:ind_sep(end)); cd(mfile_folder);
 
+database_folders = dir([mfile_folder, filesep,'rii-*']);
+database_folder = database_folders(end).name;
+
 % Add data to the existing dataset
 tic
-original_data_file_to_load = ['rii-database-2019-02-11', filesep, 'All_data_with_interpolation_04_12_2018'];
+original_data_file_to_load = [database_folder, filesep, 'All_data_with_interpolation_processed'];
 load(original_data_file_to_load);
 all_n_complex = [All_data.data(:).n_complex_interpolated];
 all_eps_complex = [All_data.data(:).epsilon_complex_interpolated];

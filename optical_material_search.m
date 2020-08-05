@@ -1,4 +1,11 @@
-% material search scenarios
+% this code search for material with a specific parameters.
+
+% We need to define one of the following material search scenarios:
+% - sort_n_in_given_wavelength
+% - sort_k_in_given_wavelength
+% - sort_SkinDepth_in_given_wavelength
+% - sort_reflectance_SemiInfiniteBulk_in_given_wavelength
+
 
 % inputs: -------
 % search scenaroi: a string or a number that identify the scenario

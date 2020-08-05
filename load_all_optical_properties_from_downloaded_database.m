@@ -1,6 +1,6 @@
 % this file read the data from the downloaded file from refractiveindex.info, and store the data in a Matlab structure for later use (for example, material search).
 
-function [epsilon_complex_interpolated, n_complex_interpolated] = step_1_load_all_optical_properties_from_downloaded_database(materialfile_full_path, input_wavelength_freq, input_unit, save_data_to_file)
+function [epsilon_complex_interpolated, n_complex_interpolated] = load_all_optical_properties_from_downloaded_database(materialfile_full_path, input_wavelength_freq, input_unit, save_data_to_file)
 if nargin < 1
 	materialfile_full_path = '*';
 end
@@ -23,9 +23,11 @@ else
 end
 	
 if nargin < 4
-	save_data_to_file = '1';
+	save_data_to_file = 1;
 end
 
+% add path for dependencies
+% run('startup.m');
 
 previous_directory = pwd;
 
@@ -34,7 +36,7 @@ path_this_mfile = mfilename('fullpath');
 inddd = find(path_this_mfile == filesep); directory_of_this_mfile = path_this_mfile(1:inddd(end));
 
 % find the latest database folder
-database_folders = dir('rii-*');
+database_folders = dir([directory_of_this_mfile, filesep, 'rii-*']);
 database_folder = database_folders(end).name;
 
 DataSource_main_folder = [directory_of_this_mfile, filesep, database_folder];
@@ -184,7 +186,7 @@ for j1 = 1 : length(All_yml_files)
 end
 
 if save_data_to_file == 1
-	save([DataSource_main_folder,filesep,'All_data_with_interpolation_04_12_2018'], 'All_data')
+	save([DataSource_main_folder,filesep,'All_data_with_interpolation_processed'], 'All_data')
 	add_data % add more data to the database
 end
 
